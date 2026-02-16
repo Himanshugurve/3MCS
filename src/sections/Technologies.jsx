@@ -53,7 +53,7 @@ const C = {
 };
 
 /* ─────────────────────────────────────────────
-   Icon Map - Maps string names to actual icon components
+   Icon Map
 ───────────────────────────────────────────── */
 const ICON_MAP = {
     FaReact,
@@ -134,15 +134,8 @@ const TECH_CATEGORIES = [
     },
 ];
 
-const STATS = [
-    { icon: 'FaRocket', value: '150+', label: 'Technologies' },
-    { icon: 'FaCloud', value: '500+', label: 'Deployments' },
-    { icon: 'FaStar', value: '99.9%', label: 'Uptime' },
-   
-];
-
 /* ─────────────────────────────────────────────
-   Hexagon Component - Responsive sizing
+   Hexagon Component
 ───────────────────────────────────────────── */
 function HexagonIcon({ iconName, color, size = 80 }) {
     const IconComponent = ICON_MAP[iconName];
@@ -171,7 +164,7 @@ function HexagonIcon({ iconName, color, size = 80 }) {
 }
 
 /* ─────────────────────────────────────────────
-   Technology Card Component - Fully Responsive
+   Technology Card Component
 ───────────────────────────────────────────── */
 function TechCard({ tech, color, visible, index }) {
     const [hovered, setHovered] = useState(false);
@@ -189,21 +182,15 @@ function TechCard({ tech, color, visible, index }) {
             onTouchStart={() => setHovered(true)}
             onTouchEnd={() => setTimeout(() => setHovered(false), 300)}
         >
-            {/* Card Background */}
             <div
                 className="relative rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 transition-all duration-500"
                 style={{
-                    background: hovered
-                        ? `linear-gradient(135deg, ${color}08 0%, ${C.white} 100%)`
-                        : C.white,
+                    background: hovered ? `linear-gradient(135deg, ${color}08 0%, ${C.white} 100%)` : C.white,
                     border: `2px solid ${hovered ? color : `${C.accentBlue}15`}`,
-                    boxShadow: hovered
-                        ? `0 20px 60px ${color}30, 0 0 0 1px ${color}20`
-                        : '0 4px 20px rgba(0,0,0,0.05)',
+                    boxShadow: hovered ? `0 20px 60px ${color}30, 0 0 0 1px ${color}20` : '0 4px 20px rgba(0,0,0,0.05)',
                     transform: hovered ? 'translateY(-8px)' : 'translateY(0)',
                 }}
             >
-                {/* Animated gradient overlay */}
                 <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{
@@ -211,7 +198,6 @@ function TechCard({ tech, color, visible, index }) {
                     }}
                 />
 
-                {/* Top section with icon */}
                 <div className="flex items-center justify-between mb-4 sm:mb-5 md:mb-6 relative z-10">
                     <div
                         className="transition-all duration-500"
@@ -222,7 +208,6 @@ function TechCard({ tech, color, visible, index }) {
                         <HexagonIcon iconName={tech.icon} color={hovered ? color : C.accentBlue} size={60} />
                     </div>
 
-                    {/* Expertise Badge */}
                     <div
                         className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-bold text-xs sm:text-sm transition-all duration-300"
                         style={{
@@ -236,7 +221,6 @@ function TechCard({ tech, color, visible, index }) {
                     </div>
                 </div>
 
-                {/* Tech name and description */}
                 <div className="relative z-10 mb-4 sm:mb-5 md:mb-6">
                     <h3
                         className="text-xl sm:text-2xl font-black mb-1 sm:mb-2 transition-colors duration-300"
@@ -254,7 +238,6 @@ function TechCard({ tech, color, visible, index }) {
                     </p>
                 </div>
 
-                {/* Skill Level Indicators - Dot Pattern */}
                 <div className="relative z-10">
                     <div className="flex items-center justify-between mb-2 sm:mb-3">
                         <span
@@ -275,7 +258,6 @@ function TechCard({ tech, color, visible, index }) {
                         </span>
                     </div>
 
-                    {/* Dot matrix visualization */}
                     <div className="grid grid-cols-10 gap-1 sm:gap-1.5">
                         {[...Array(10)].map((_, i) => {
                             const threshold = (i + 1) * 10;
@@ -300,7 +282,6 @@ function TechCard({ tech, color, visible, index }) {
                     </div>
                 </div>
 
-                {/* Bottom tags */}
                 <div className="flex gap-2 mt-4 sm:mt-5 md:mt-6 relative z-10">
                     <div
                         className="px-2.5 sm:px-3 py-1 rounded-lg text-[10px] sm:text-xs font-semibold"
@@ -324,7 +305,6 @@ function TechCard({ tech, color, visible, index }) {
                     </div>
                 </div>
 
-                {/* Corner accent */}
                 <div
                     className="absolute top-0 right-0 w-20 sm:w-24 h-20 sm:h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{
@@ -332,7 +312,6 @@ function TechCard({ tech, color, visible, index }) {
                     }}
                 />
 
-                {/* Code bracket indicator */}
                 <div
                     className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 opacity-0 group-hover:opacity-100 transition-all duration-500 text-[10px] sm:text-xs"
                     style={{
@@ -349,28 +328,22 @@ function TechCard({ tech, color, visible, index }) {
 }
 
 /* ─────────────────────────────────────────────
-   Category Tab Component - Simplified and Responsive
+   Category Tab Component
 ───────────────────────────────────────────── */
 function CategoryTab({ category, isActive, onClick, color }) {
     return (
         <button
             className="relative px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg sm:rounded-xl md:rounded-2xl font-bold text-xs sm:text-sm md:text-base transition-all duration-300"
             style={{
-                background: isActive
-                    ? color
-                    : C.white,
+                background: isActive ? color : C.white,
                 color: isActive ? C.white : C.black,
                 border: `2px solid ${isActive ? color : `${C.accentBlue}15`}`,
-                boxShadow: isActive
-                    ? `0 4px 16px ${color}40`
-                    : '0 2px 8px rgba(0,0,0,0.04)',
+                boxShadow: isActive ? `0 4px 16px ${color}40` : '0 2px 8px rgba(0,0,0,0.04)',
                 transform: isActive ? 'translateY(-2px)' : 'translateY(0)',
             }}
             onClick={onClick}
         >
             {category}
-
-            {/* Active indicator line */}
             {isActive && (
                 <div
                     className="absolute bottom-0 left-0 right-0 h-0.5 sm:h-1"
@@ -384,7 +357,7 @@ function CategoryTab({ category, isActive, onClick, color }) {
 }
 
 /* ─────────────────────────────────────────────
-   Performance Graph Component - Responsive
+   IMPROVED Performance Graph Component
 ───────────────────────────────────────────── */
 function PerformanceGraph({ visible }) {
     const [graphData, setGraphData] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
@@ -407,7 +380,7 @@ function PerformanceGraph({ visible }) {
         },
         {
             label: 'Uptime',
-            data: [97, 98, 98, 99, 99, 99.5, 99.7, 99.8, 99.9, 99.9, 99.9, 99.9],
+            data: [97.0, 98.0, 98.0, 99.0, 99.0, 99.5, 99.7, 99.8, 99.9, 99.9, 99.9, 99.9],
             color: C.accentBlue,
             icon: 'FaServer',
             value: '99.9%'
@@ -415,7 +388,7 @@ function PerformanceGraph({ visible }) {
     ];
 
     const currentMetric = metricsData[activeMetric];
-    const graphColor = C.brandOrange;
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     useEffect(() => {
         if (!visible) {
@@ -431,438 +404,364 @@ function PerformanceGraph({ visible }) {
     }, [visible, activeMetric]);
 
     const maxValue = Math.max(...currentMetric.data);
+    const minValue = Math.min(...currentMetric.data);
+
+    const generateLinePath = () => {
+        if (graphData.length === 0) return '';
+
+        // Add padding to prevent points from going out of bounds
+        const padding = 2;
+        const points = graphData.map((value, i) => {
+            const x = padding + ((i / (graphData.length - 1)) * (100 - 2 * padding));
+            const y = padding + ((1 - (value - minValue) / (maxValue - minValue)) * (100 - 2 * padding));
+            return `${x},${y}`;
+        });
+
+        // Use smooth curve with Catmull-Rom spline for better connection between points
+        if (points.length < 3) {
+            return points.map((point, i) => `${i === 0 ? 'M' : 'L'} ${point}`).join(' ');
+        }
+
+        let path = `M ${points[0]}`;
+
+        for (let i = 0; i < points.length - 1; i++) {
+            const p0 = points[Math.max(0, i - 1)];
+            const p1 = points[i];
+            const p2 = points[i + 1];
+            const p3 = points[Math.min(points.length - 1, i + 2)];
+
+            const [x0, y0] = p0.split(',').map(Number);
+            const [x1, y1] = p1.split(',').map(Number);
+            const [x2, y2] = p2.split(',').map(Number);
+            const [x3, y3] = p3.split(',').map(Number);
+
+            const cp1x = x1 + (x2 - x0) / 6;
+            const cp1y = y1 + (y2 - y0) / 6;
+            const cp2x = x2 - (x3 - x1) / 6;
+            const cp2y = y2 - (y3 - y1) / 6;
+
+            path += ` C ${cp1x},${cp1y} ${cp2x},${cp2y} ${x2},${y2}`;
+        }
+
+        return path;
+    };
+
+    const generateAreaPath = () => {
+        if (graphData.length === 0) return '';
+
+        const linePath = generateLinePath();
+        // Add padding to area path
+        return `${linePath} L 98,98 L 2,98 Z`;
+    };
 
     return (
         <div
-            className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-hidden"
+            className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 relative overflow-hidden"
             style={{
-                background: `linear-gradient(135deg, ${C.primaryLight} 0%, ${C.primaryDark} 100%)`,
+                background: `linear-gradient(135deg, ${C.primaryDark} 0%, ${C.primaryLight} 100%)`,
                 opacity: visible ? 1 : 0,
                 transform: visible ? 'translateY(0)' : 'translateY(40px)',
                 transition: 'all 0.8s ease 1s',
                 boxShadow: '0 20px 60px rgba(23, 25, 74, 0.3)',
             }}
         >
-            {/* Technical grid overlay */}
-            <div className="absolute inset-0 opacity-5 pointer-events-none">
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <div className="absolute inset-0 opacity-5">
+                <svg width="100%" height="100%">
                     <defs>
-                        <pattern id="perf-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
                             <path d="M 40 0 L 0 0 0 40" fill="none" stroke={C.white} strokeWidth="1" />
                         </pattern>
                     </defs>
-                    <rect width="100%" height="100%" fill="url(#perf-grid)" />
+                    <rect width="100%" height="100%" fill="url(#grid)" />
                 </svg>
             </div>
-            
-            {/* Subtle gradient overlay for depth */}
-            <div className="absolute inset-0 opacity-10 pointer-events-none"
-                style={{
-                    background: `radial-gradient(circle at top right, ${C.brandOrange}40 0%, transparent 60%)`
-                }}
-            />
 
             <div className="relative z-10">
-                {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 sm:mb-8 gap-4">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
                     <div>
-                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-2" style={{ color: C.white }}>
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-black mb-2 text-white">
                             Performance Analytics
                         </h3>
-                        <p className="text-sm sm:text-base" style={{ color: `${C.white}90` }}>
+                        <p className="text-sm sm:text-base text-white/80">
                             Real-time monitoring across 12 months
                         </p>
                     </div>
 
-                    {/* Metric Selector Pills - Responsive */}
                     <div className="flex gap-2 flex-wrap">
-                        {metricsData.map((metric, i) => {
-                            const MetricIcon = ICON_MAP[metric.icon];
-                            return (
-                                <button
-                                    key={metric.label}
-                                    className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm transition-all duration-300 flex items-center gap-1.5 sm:gap-2"
-                                    style={{
-                                        background: activeMetric === i
-                                            ? metric.color
-                                            : `${C.white}15`,
-                                        color: activeMetric === i ? C.white : `${C.white}90`,
-                                        border: `2px solid ${activeMetric === i ? metric.color : `${C.white}25`}`,
-                                        boxShadow: activeMetric === i ? `0 4px 12px ${metric.color}50` : 'none',
-                                    }}
-                                    onClick={() => setActiveMetric(i)}
-                                >
-                                    {MetricIcon && <MetricIcon size={14} />}
-                                    <span className="hidden sm:inline">{metric.label}</span>
-                                    <span className="sm:hidden">{metric.label.slice(0, 4)}</span>
-                                </button>
-                            );
-                        })}
+                        {metricsData.map((metric, i) => (
+                            <button
+                                key={metric.label}
+                                className="px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300"
+                                style={{
+                                    background: activeMetric === i ? metric.color : 'rgba(255,255,255,0.1)',
+                                    color: C.white,
+                                    border: `2px solid ${activeMetric === i ? metric.color : 'rgba(255,255,255,0.2)'}`,
+                                    boxShadow: activeMetric === i ? `0 4px 12px ${metric.color}50` : 'none',
+                                }}
+                                onClick={() => setActiveMetric(i)}
+                            >
+                                {metric.label}
+                            </button>
+                        ))}
                     </div>
                 </div>
 
-                {/* Graph Area - Responsive Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-[3fr_1fr] xl:grid-cols-[3.5fr_1fr] gap-6 sm:gap-8">
-                    {/* Main Graph */}
-                    <div>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div className="lg:col-span-2">
                         <div
-                            className="rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 relative overflow-hidden"
+                            className="rounded-2xl p-6 relative"
                             style={{
-                                background: `linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%)`,
-                                border: `2px solid rgba(255, 255, 255, 0.2)`,
+                                background: 'rgba(255, 255, 255, 0.05)',
+                                border: '2px solid rgba(255, 255, 255, 0.1)',
                                 backdropFilter: 'blur(10px)',
-                                boxShadow: 'inset 0 2px 20px rgba(255, 255, 255, 0.05)',
                             }}
                         >
-                            {/* Graph SVG - Proper axis implementation */}
-                            <div className="relative" style={{ height: '400px', paddingLeft: '40px', paddingBottom: '50px', paddingTop: '20px', paddingRight: '20px' }}>
-                                <svg width="100%" height="100%" viewBox="0 0 100 100" className="overflow-visible" style={{ display: 'block' }}>
+                            <div className="relative" style={{ height: '400px' }}>
+                                <svg
+                                    viewBox="0 0 100 100"
+                                    preserveAspectRatio="none"
+                                    className="w-full h-full"
+                                >
                                     <defs>
-                                        {/* Gradient for area fill */}
-                                        <linearGradient id="graph-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                            <stop offset="0%" stopColor={graphColor} stopOpacity="0.5" />
-                                            <stop offset="100%" stopColor={graphColor} stopOpacity="0.05" />
+                                        <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" stopColor={currentMetric.color} stopOpacity="0.3" />
+                                            <stop offset="100%" stopColor={currentMetric.color} stopOpacity="0.05" />
                                         </linearGradient>
+                                        <linearGradient id={`lineGradient-${activeMetric}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stopColor={currentMetric.color} stopOpacity="0.1" />
+                                            <stop offset="50%" stopColor={currentMetric.color} stopOpacity="0.5" />
+                                            <stop offset="100%" stopColor={currentMetric.color} stopOpacity="0.1" />
+                                        </linearGradient>
+                                        <filter id="glow">
+                                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                            <feMerge>
+                                                <feMergeNode in="coloredBlur"/>
+                                                <feMergeNode in="SourceGraphic"/>
+                                            </feMerge>
+                                        </filter>
                                     </defs>
 
-                                    {/* Y-axis labels and grid lines */}
-                                    {[0, 25, 50, 75, 100].map((percent, idx) => {
-                                        const yPos = `${percent}%`;
-                                        return (
-                                            <g key={percent}>
-                                                {/* Horizontal grid line */}
-                                                <line
-                                                    x1="0"
-                                                    y1={yPos}
-                                                    x2="100%"
-                                                    y2={yPos}
-                                                    stroke="rgba(255, 255, 255, 0.2)"
-                                                    strokeWidth="1"
-                                                    strokeDasharray="4 4"
-                                                />
-                                                {/* Y-axis label */}
-                                                <text
-                                                    x="-10"
-                                                    y={yPos}
-                                                    fill="rgba(255, 255, 255, 0.7)"
-                                                    fontSize="12"
-                                                    textAnchor="end"
-                                                    dominantBaseline="middle"
-                                                    fontWeight="600"
-                                                >
-                                                    {Math.round((100 - percent) * maxValue / 100)}
-                                                </text>
-                                            </g>
-                                        );
-                                    })}
+                                    {[0, 25, 50, 75, 100].map((y) => (
+                                        <line
+                                            key={y}
+                                            x1="0"
+                                            y1={y}
+                                            x2="100"
+                                            y2={y}
+                                            stroke="rgba(255,255,255,0.1)"
+                                            strokeWidth="0.5"
+                                            strokeDasharray="2,2"
+                                        />
+                                    ))}
 
-                                    {/* Area fill under the line */}
                                     <path
-                                        d={`
-                                            M 0,100
-                                            ${graphData.map((value, i) => {
-                                            const xPercent = (i / (graphData.length - 1)) * 100;
-                                            const yPercent = 100 - (value / maxValue) * 100;
-                                            return `L ${xPercent},${yPercent}`;
-                                        }).join(' ')}
-                                            L 100,100 Z
-                                        `}
-                                        fill="url(#graph-gradient)"
+                                        d={generateAreaPath()}
+                                        fill="url(#areaGradient)"
                                         style={{
                                             transition: 'all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
                                         }}
                                     />
 
-                                    {/* Line graph */}
                                     <path
-                                        d={graphData.map((value, i) => {
-                                            const xPercent = (i / (graphData.length - 1)) * 100;
-                                            const yPercent = 100 - (value / maxValue) * 100;
-                                            return `${i === 0 ? 'M' : 'L'} ${xPercent},${yPercent}`;
-                                        }).join(' ')}
-                                        stroke={graphColor}
-                                        strokeWidth="3"
+                                        d={generateLinePath()}
+                                        stroke={C.brandOrange}
+                                        strokeWidth="0.8"
                                         fill="none"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
                                         style={{
-                                            filter: `drop-shadow(0 0 8px ${graphColor})`,
+                                            filter: `drop-shadow(0 0 4px ${C.brandOrange})`,
                                             transition: 'all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
                                         }}
                                     />
 
-                                    {/* Data points - Perfect circles */}
+                                    {/* Animated gradient trail effect */}
+                                    <path
+                                        d={generateLinePath()}
+                                        stroke={`url(#lineGradient-${activeMetric})`}
+                                        strokeWidth="2"
+                                        fill="none"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeOpacity="0.3"
+                                        style={{
+                                            transition: 'all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                                        }}
+                                    />
+
                                     {graphData.map((value, i) => {
-                                        const xPercent = (i / (graphData.length - 1)) * 100;
-                                        const yPercent = 100 - (value / maxValue) * 100;
+                                        const padding = 2;
+                                        const x = padding + ((i / (graphData.length - 1)) * (100 - 2 * padding));
+                                        const y = padding + ((1 - (value - minValue) / (maxValue - minValue)) * (100 - 2 * padding));
                                         return (
                                             <g key={i}>
-                                                {/* Outer glow circle */}
+                                                {/* Outer animated ring */}
                                                 <circle
-                                                    cx={`${xPercent}%`}
-                                                    cy={`${yPercent}%`}
-                                                    r="10"
-                                                    fill={graphColor}
-                                                    opacity="0.3"
-                                                    style={{
-                                                        opacity: visible ? 0.3 : 0,
-                                                        transition: `all 0.8s ease ${1.2 + i * 0.1}s`,
-                                                    }}
-                                                >
-                                                    <animate
-                                                        attributeName="r"
-                                                        values="10;14;10"
-                                                        dur="2s"
-                                                        begin={`${i * 0.2}s`}
-                                                        repeatCount="indefinite"
-                                                    />
-                                                </circle>
-                                                {/* Main circle */}
-                                                <circle
-                                                    cx={`${xPercent}%`}
-                                                    cy={`${yPercent}%`}
-                                                    r="6"
-                                                    fill={graphColor}
-                                                    stroke={C.white}
-                                                    strokeWidth="2"
+                                                    cx={x}
+                                                    cy={y}
+                                                    r="4"
+                                                    fill="none"
+                                                    stroke={C.brandOrange}
+                                                    strokeWidth="0.5"
+                                                    strokeOpacity="0.3"
                                                     style={{
                                                         opacity: visible ? 1 : 0,
                                                         transition: `all 0.8s ease ${1.2 + i * 0.1}s`,
-                                                        filter: `drop-shadow(0 0 4px ${graphColor})`,
+                                                        animation: visible ? `pulse ${2 + i * 0.1}s ease-in-out infinite` : 'none',
                                                     }}
-                                                >
-                                                    <animate
-                                                        attributeName="r"
-                                                        values="6;8;6"
-                                                        dur="2s"
-                                                        begin={`${i * 0.2}s`}
-                                                        repeatCount="indefinite"
-                                                    />
-                                                </circle>
+                                                />
+                                                {/* Main point */}
+                                                <circle
+                                                    cx={x}
+                                                    cy={y}
+                                                    r="1.2"
+                                                    fill={C.brandOrange}
+                                                    stroke={C.white}
+                                                    strokeWidth="0.8"
+                                                    style={{
+                                                        opacity: visible ? 1 : 0,
+                                                        transition: `all 0.8s ease ${1.2 + i * 0.1}s`,
+                                                        filter: `drop-shadow(0 0 2px ${C.brandOrange})`,
+                                                    }}
+                                                />
+                                                {/* Inner glow */}
+                                                <circle
+                                                    cx={x}
+                                                    cy={y}
+                                                    r="2.5"
+                                                    fill={C.brandOrange}
+                                                    fillOpacity="0.1"
+                                                    style={{
+                                                        opacity: visible ? 1 : 0,
+                                                        transition: `all 0.8s ease ${1.2 + i * 0.1}s`,
+                                                    }}
+                                                />
                                             </g>
                                         );
                                     })}
                                 </svg>
 
-                                {/* X-axis (Month) labels */}
-                                <div className="absolute bottom-0 left-0 right-0 flex justify-between">
-                                    {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((month, i) => (
-                                        <span
-                                            key={month}
-                                            className="text-xs font-semibold"
-                                            style={{
-                                                color: `rgba(255, 255, 255, 0.8)`,
-                                                opacity: visible ? 1 : 0,
-                                                transition: `opacity 0.5s ease ${1.5 + i * 0.05}s`
-                                            }}
-                                        >
-                                            {month}
-                                        </span>
-                                    ))}
+                                <div className="absolute left-0 top-0 bottom-0 flex flex-col justify-between -ml-14 py-2">
+                                    {[maxValue, maxValue * 0.75, maxValue * 0.5, maxValue * 0.25, minValue].map((val, i) => {
+                                        const yPosition = 100 - (i / 4) * 100;
+                                        return (
+                                            <span
+                                                key={i}
+                                                className="text-xs text-white/60 font-semibold absolute"
+                                                style={{
+                                                    top: `${yPosition}%`,
+                                                    transform: 'translateY(-50%)'
+                                                }}
+                                            >
+                                                {Math.round(val)}
+                                            </span>
+                                        );
+                                    })}
                                 </div>
 
-                                {/* Y-axis label */}
-                                <div 
-                                    className="absolute left-0 top-1/2 -translate-y-1/2 -rotate-90 text-xs font-bold tracking-wider uppercase"
-                                    style={{ 
-                                        color: 'rgba(255, 255, 255, 0.6)',
-                                        transformOrigin: 'center',
-                                        left: '-15px'
-                                    }}
-                                >
-                                    Value
-                                </div>
-
-                                {/* X-axis label */}
-                                <div 
-                                    className="absolute bottom-0 left-1/2 -translate-x-1/2 text-xs font-bold tracking-wider uppercase"
-                                    style={{ 
-                                        color: 'rgba(255, 255, 255, 0.6)',
-                                        bottom: '-30px'
-                                    }}
-                                >
-                                    Months
+                                <div className="absolute bottom-0 left-0 right-0 flex justify-between -mb-10 px-2">
+                                    {months.map((month, i) => {
+                                        const xPosition = (i / (months.length - 1)) * 100;
+                                        return (
+                                            <span
+                                                key={month}
+                                                className="text-xs text-white/60 font-semibold absolute whitespace-nowrap"
+                                                style={{
+                                                    left: `${xPosition}%`,
+                                                    transform: 'translateX(-50%)',
+                                                    opacity: visible ? 1 : 0,
+                                                    transition: `opacity 0.5s ease ${1.5 + i * 0.05}s`
+                                                }}
+                                            >
+                                                {month}
+                                            </span>
+                                        );
+                                    })}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Dynamic Metric Insights Panel */}
                     <div className="space-y-4">
-                        {/* Current Metric Overview Card */}
                         <div
-                            className="rounded-xl sm:rounded-2xl p-5 sm:p-6 relative overflow-hidden transition-all duration-500"
+                            className="rounded-2xl p-6 relative overflow-hidden"
                             style={{
-                                background: `linear-gradient(135deg, ${currentMetric.color}25 0%, ${currentMetric.color}10 100%)`,
+                                background: `linear-gradient(135deg, ${currentMetric.color}30 0%, ${currentMetric.color}10 100%)`,
                                 border: `2px solid ${currentMetric.color}40`,
-                                backdropFilter: 'blur(10px)',
-                                boxShadow: `0 8px 32px ${currentMetric.color}20, inset 0 2px 10px rgba(255, 255, 255, 0.1)`,
-                                opacity: visible ? 1 : 0,
-                                transform: visible ? 'scale(1)' : 'scale(0.95)',
-                                transition: 'all 0.6s ease 1s',
                             }}
                         >
-                            {/* Animated background gradient */}
-                            <div 
-                                className="absolute inset-0 opacity-30"
-                                style={{
-                                    background: `radial-gradient(circle at 30% 50%, ${currentMetric.color}20 0%, transparent 70%)`,
-                                }}
-                            />
-                            
-                            <div className="relative z-10">
-                                {/* Header with icon */}
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div
-                                        className="w-12 h-12 rounded-xl flex items-center justify-center"
-                                        style={{
-                                            background: `linear-gradient(135deg, ${currentMetric.color} 0%, ${currentMetric.color}cc 100%)`,
-                                            boxShadow: `0 4px 12px ${currentMetric.color}40`,
-                                        }}
-                                    >
-                                        {ICON_MAP[currentMetric.icon] && React.createElement(ICON_MAP[currentMetric.icon], { 
-                                            size: 24, 
-                                            color: C.white 
-                                        })}
-                                    </div>
-                                    <div>
-                                        <div className="text-xs font-bold uppercase tracking-wider opacity-70" style={{ color: C.white }}>
-                                            Current Metric
-                                        </div>
-                                        <div className="text-lg font-black" style={{ color: C.white }}>
-                                            {currentMetric.label}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Live Value Display */}
-                                <div className="mb-4">
-                                    <div className="text-4xl sm:text-5xl font-black mb-1" style={{ color: C.white }}>
-                                        {currentMetric.value}
-                                    </div>
-                                    <div className="text-xs uppercase tracking-wider font-semibold" style={{ color: `${C.white}90` }}>
-                                        Latest Performance
-                                    </div>
-                                </div>
-
-                                {/* Progress Ring */}
-                                <div className="flex items-center gap-4">
-                                    <svg width="80" height="80" className="transform -rotate-90">
-                                        <circle
-                                            cx="40"
-                                            cy="40"
-                                            r="34"
-                                            stroke={`${C.white}20`}
-                                            strokeWidth="6"
-                                            fill="none"
-                                        />
-                                        <circle
-                                            cx="40"
-                                            cy="40"
-                                            r="34"
-                                            stroke={C.white}
-                                            strokeWidth="6"
-                                            fill="none"
-                                            strokeDasharray={`${(graphData[graphData.length - 1] / maxValue) * 213.6} 213.6`}
-                                            strokeLinecap="round"
-                                            style={{
-                                                transition: 'all 1s ease',
-                                                filter: `drop-shadow(0 0 8px ${C.white}80)`
-                                            }}
-                                        />
-                                    </svg>
-                                    <div className="flex-1">
-                                        <div className="text-2xl font-black mb-1" style={{ color: C.white }}>
-                                            {Math.round((graphData[graphData.length - 1] / maxValue) * 100)}%
-                                        </div>
-                                        <div className="text-xs font-semibold opacity-80" style={{ color: C.white }}>
-                                            Completion Rate
-                                        </div>
-                                    </div>
-                                </div>
+                            <div className="text-sm font-bold uppercase tracking-wider text-white/70 mb-2">
+                                Current Value
+                            </div>
+                            <div className="text-5xl font-black text-white mb-2">
+                                {currentMetric.value}
+                            </div>
+                            <div className="text-sm text-white/80">
+                                {currentMetric.label}
                             </div>
                         </div>
 
-                        {/* Mini Statistics Cards */}
-                        {/* {[
-                            { 
-                                label: 'Peak Value', 
-                                value: Math.max(...graphData),
-                                icon: 'FaChartLine',
-                                color: '#4CAF50'
-                            },
-                            { 
-                                label: 'Average', 
-                                value: Math.round(graphData.reduce((a, b) => a + b, 0) / graphData.length),
-                                icon: 'FaServer',
-                                color: '#2196F3'
-                            },
-                            { 
-                                label: 'Trend', 
-                                value: graphData[graphData.length - 1] > graphData[0] ? '+' + Math.round(((graphData[graphData.length - 1] - graphData[0]) / graphData[0]) * 100) + '%' : Math.round(((graphData[graphData.length - 1] - graphData[0]) / graphData[0]) * 100) + '%',
-                                icon: 'FaRocket',
-                                color: '#FF9800'
-                            },
-                        ].map((stat, i) => {
-                            const StatIcon = ICON_MAP[stat.icon]; */}
-                           
+                        <div className="grid grid-cols-2 gap-4">
+                            <div
+                                className="rounded-xl p-4"
+                                style={{
+                                    background: 'rgba(255, 255, 255, 0.05)',
+                                    border: '2px solid rgba(255, 255, 255, 0.1)',
+                                }}
+                            >
+                                <div className="text-2xl font-black text-white">
+                                    {Math.max(...graphData)}
+                                </div>
+                                <div className="text-xs text-white/60 font-semibold">Peak</div>
+                            </div>
+                            <div
+                                className="rounded-xl p-4"
+                                style={{
+                                    background: 'rgba(255, 255, 255, 0.05)',
+                                    border: '2px solid rgba(255, 255, 255, 0.1)',
+                                }}
+                            >
+                                <div className="text-2xl font-black text-white">
+                                    {Math.round(graphData.reduce((a, b) => a + b, 0) / graphData.length)}
+                                </div>
+                                <div className="text-xs text-white/60 font-semibold">Average</div>
+                            </div>
+                        </div>
 
-                        {/* Interactive Data Timeline */}
                         <div
-                            className="rounded-xl p-4 relative overflow-hidden"
+                            className="rounded-xl p-4"
                             style={{
-                                background: `linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%)`,
-                                border: `2px solid rgba(255, 255, 255, 0.2)`,
-                                backdropFilter: 'blur(10px)',
-                                opacity: visible ? 1 : 0,
-                                transform: visible ? 'translateY(0)' : 'translateY(20px)',
-                                transition: 'all 0.6s ease 2s',
+                                background: 'rgba(255, 255, 255, 0.05)',
+                                border: '2px solid rgba(255, 255, 255, 0.1)',
                             }}
                         >
-                            <div className="text-xs uppercase tracking-wider font-bold mb-3" style={{ color: `${C.white}70` }}>
-                                12-Month Overview
+                            <div className="text-xs uppercase tracking-wider font-bold mb-3 text-white/70">
+                                12-Month Trend
                             </div>
-                            
-                            {/* Mini bar chart */}
-                            <div className="flex items-end justify-between gap-1 h-16">
+                            <div className="flex items-end justify-between gap-1 h-20">
                                 {graphData.map((value, i) => (
                                     <div
                                         key={i}
-                                        className="flex-1 rounded-t transition-all duration-500 hover:opacity-100 group cursor-pointer"
+                                        className="flex-1 rounded-t transition-all duration-500"
                                         style={{
-                                            height: `${(value / maxValue) * 100}%`,
-                                            background: `linear-gradient(to top, ${currentMetric.color} 0%, ${currentMetric.color}80 100%)`,
-                                            opacity: 0.6,
+                                            height: `${((value - minValue) / (maxValue - minValue)) * 100}%`,
+                                            background: currentMetric.color,
+                                            opacity: 0.7,
                                             transitionDelay: `${i * 0.05}s`,
                                         }}
-                                        title={`Month ${i + 1}: ${value}`}
-                                    >
-                                        <div className="w-full h-full group-hover:scale-110 transition-transform" />
-                                    </div>
+                                    />
                                 ))}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            {/* Decorative corner elements */}
-            <div className="absolute top-0 left-0 w-24 sm:w-32 h-24 sm:h-32 opacity-10 pointer-events-none">
-                <svg viewBox="0 0 100 100">
-                    <path d="M0 0 L100 0 L100 50 L50 100 L0 100 Z" fill={C.brandOrange} />
-                </svg>
-            </div>
-            <div className="absolute bottom-0 right-0 w-24 sm:w-32 h-24 sm:h-32 opacity-10 pointer-events-none rotate-180">
-                <svg viewBox="0 0 100 100">
-                    <path d="M0 0 L100 0 L100 50 L50 100 L0 100 Z" fill={C.brandOrange} />
-                </svg>
-            </div>
         </div>
     );
 }
 
 /* ─────────────────────────────────────────────
-   Main Technologies Page - Fully Responsive
+   Main Technologies Component
 ───────────────────────────────────────────── */
 export default function Technologies() {
     const [visible, setVisible] = useState(false);
@@ -898,7 +797,6 @@ export default function Technologies() {
                 background: `linear-gradient(180deg, ${C.white} 0%, #F5F7FF 50%, ${C.white} 100%)`,
             }}
         >
-            {/* Background Effects - Responsive */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div
                     className="absolute -top-40 -right-40 w-full max-w-2xl aspect-square rounded-full blur-3xl opacity-10 sm:opacity-15"
@@ -922,7 +820,6 @@ export default function Technologies() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-                {/* Header Section - Responsive */}
                 <div
                     className="text-center max-w-4xl mx-auto mb-8 sm:mb-10 md:mb-12"
                     style={{
@@ -931,7 +828,6 @@ export default function Technologies() {
                         transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     }}
                 >
-                    {/* Badge */}
                     <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full mb-3 sm:mb-4"
                         style={{
                             background: `linear-gradient(135deg, ${C.brandOrange}15 0%, ${C.brandOrange}05 100%)`,
@@ -948,41 +844,22 @@ export default function Technologies() {
                         </span>
                     </div>
 
-                    {/* Main heading - Responsive */}
                     <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight mb-3 sm:mb-4">
-                        <span style={{ color: C.primaryDark }}>
-                            Our
-                        </span>
-                        <span
-                            className="relative inline-block"
-                            style={{ color: C.brandOrange }}
-                        >
+                        <span style={{ color: C.primaryDark }}>Our</span>
+                        <span className="relative inline-block" style={{ color: C.brandOrange }}>
                             {' '}Technical{' '}
-                            <svg
-                                className="absolute -bottom-1 sm:-bottom-2 left-0 w-full"
-                                height="12"
-                                viewBox="0 0 400 16"
-                            >
-                                <path
-                                    d="M0 8 Q100 2, 200 8 T400 8"
-                                    stroke={C.brandOrange}
-                                    strokeWidth="3"
-                                    fill="none"
-                                    opacity="0.4"
-                                />
+                            <svg className="absolute -bottom-1 sm:-bottom-2 left-0 w-full" height="12" viewBox="0 0 400 16">
+                                <path d="M0 8 Q100 2, 200 8 T400 8" stroke={C.brandOrange} strokeWidth="3" fill="none" opacity="0.4" />
                             </svg>
                         </span>
-                       
                         <span style={{ color: C.primaryDark }}>Arsenal</span>
                     </h2>
 
-                    {/* Subheading - Responsive */}
                     <p className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto px-4" style={{ color: C.accentBlue }}>
                         Cutting-edge technologies and frameworks powering enterprise-grade solutions.
                         Built for scale, optimized for performance.
                     </p>
 
-                    {/* Tech indicators - Responsive */}
                     <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 text-xs sm:text-sm font-mono">
                         {['AI-Powered', 'Cloud-Native', 'Scalable'].map((tag, i) => (
                             <div
@@ -1001,7 +878,6 @@ export default function Technologies() {
                     </div>
                 </div>
 
-                {/* Category Tabs - Responsive */}
                 <div
                     className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-8"
                     style={{
@@ -1021,9 +897,7 @@ export default function Technologies() {
                     ))}
                 </div>
 
-                {/* Technologies Cards with Scroll Navigation */}
                 <div className="relative mb-10 sm:mb-12">
-                    {/* Left Arrow - Hidden on md and up */}
                     <button
                         onClick={() => scroll('left')}
                         className="md:hidden absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
@@ -1037,7 +911,6 @@ export default function Technologies() {
                         <FaChevronLeft size={16} />
                     </button>
 
-                    {/* Right Arrow - Hidden on md and up */}
                     <button
                         onClick={() => scroll('right')}
                         className="md:hidden absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
@@ -1051,7 +924,6 @@ export default function Technologies() {
                         <FaChevronRight size={16} />
                     </button>
 
-                    {/* Mobile: Horizontal scroll */}
                     <div
                         ref={scrollContainerRef}
                         className="md:hidden flex gap-4 overflow-x-auto pb-4 px-12 scrollbar-hide snap-x snap-mandatory"
@@ -1068,7 +940,6 @@ export default function Technologies() {
                         ))}
                     </div>
 
-                    {/* Desktop: Grid */}
                     <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {TECH_CATEGORIES[activeCategory].technologies.map((tech, i) => (
                             <TechCard
@@ -1082,12 +953,10 @@ export default function Technologies() {
                     </div>
                 </div>
 
-                {/* Performance Analytics Graph Section */}
                 <PerformanceGraph visible={visible} />
 
             </div>
 
-            {/* Scrollbar hide styles */}
             <style>{`
                 .scrollbar-hide::-webkit-scrollbar {
                     display: none;
@@ -1095,6 +964,10 @@ export default function Technologies() {
                 .scrollbar-hide {
                     -ms-overflow-style: none;
                     scrollbar-width: none;
+                }
+                @keyframes pulse {
+                    0%, 100% { opacity: 0.3; transform: scale(1); }
+                    50% { opacity: 0.6; transform: scale(1.1); }
                 }
             `}</style>
         </section>
